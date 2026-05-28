@@ -1,11 +1,10 @@
 import os
 from pathlib import Path
 
-from django.conf.global_settings import SECRET_KEY
+from django.conf.global_settings import SECRET_KEY, AUTH_USER_MODEL
 from dotenv import load_dotenv
 
 load_dotenv()
-
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,6 +23,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "users",
+    "lessons",
 ]
 
 MIDDLEWARE = [
@@ -57,13 +58,14 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv("NAME"),
-        'USER': os.getenv("USER"),
-        'PASSWORD': os.getenv("PASSWORD"),
-        'HOST': os.getenv("HOST"),
-        'PORT': os.getenv("PORT"),
-    }}
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": os.getenv("NAME"),
+        "USER": os.getenv("USER"),
+        "PASSWORD": os.getenv("PASSWORD"),
+        "HOST": os.getenv("HOST"),
+        "PORT": os.getenv("PORT"),
+    }
+}
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -92,5 +94,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+AUTH_USER_MODEL = "users.User"
