@@ -9,6 +9,8 @@ class Course(models.Model):
     )
     preview = models.ImageField(
         upload_to="lessons/course_previews",
+        null=True,
+        blank=True,
         verbose_name="Превью",
         help_text="Загрузите превью курса",
     )
@@ -36,6 +38,8 @@ class Lesson(models.Model):
     )
     preview = models.ImageField(
         upload_to="lessons/lesson_previews",
+        null=True,
+        blank=True,
         verbose_name="Превью",
         help_text="Загрузите превью урока",
     )
