@@ -32,6 +32,6 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
-    class Mets:
+    class Meta:
         verbose_name = "Пользовватель"
         verbose_name_plural = "Пользователи"
