@@ -1,0 +1,112 @@
+[
+    {
+        "model": "lessons.lesson",
+        "pk": 1,
+        "fields": {
+            "course": 1,
+            "name": "Урок 1: Введение в Python",
+            "preview": "lessons/preview/python_intro.jpg",
+            "description": "История Python, установка, первая программа, основы синтаксиса.",
+            "link": "https://www.youtube.com/watch?v=example1"
+        }
+    },
+    {
+        "model": "lessons.lesson",
+        "pk": 2,
+        "fields": {
+            "course": 1,
+            "name": "Урок 2: Переменные и типы данных",
+            "preview": "lessons/preview/python_variables.jpg",
+            "description": "Числа, строки, списки, словари. Основные операции с типами данных.",
+            "link": "https://www.youtube.com/watch?v=example2"
+        }
+    },
+    {
+        "model": "lessons.lesson",
+        "pk": 3,
+        "fields": {
+            "course": 1,
+            "name": "Урок 3: Условные операторы и циклы",
+            "preview": "lessons/preview/python_conditions.jpg",
+            "description": "if-else, for, while. Управление потоком выполнения программы.",
+            "link": "https://www.youtube.com/watch?v=example3"
+        }
+    },
+    {
+        "model": "lessons.lesson",
+        "pk": 4,
+        "fields": {
+            "course": 1,
+            "name": "Урок 4: Функции",
+            "preview": "lessons/preview/python_functions.jpg",
+            "description": "Создание функций, аргументы, возвращаемые значения, области видимости.",
+            "link": "https://www.youtube.com/watch?v=example4"
+        }
+    },
+    {
+        "model": "lessons.lesson",
+        "pk": 5,
+        "fields": {
+            "course": 2,
+            "name": "Урок 1: Введение в DRF",
+            "preview": "lessons/preview/drf_intro.jpg",
+            "description": "Что такое REST API? Установка DRF, создание первого API.",
+            "link": "https://www.youtube.com/watch?v=example5"
+        }
+    },
+    {
+        "model": "lessons.lesson",
+        "pk": 6,
+        "fields": {
+            "course": 2,
+            "name": "Урок 2: Сериализаторы",
+            "preview": "lessons/preview/drf_serializers.jpg",
+            "description": "ModelSerializer, валидация данных, работа с вложенными объектами.",
+            "link": "https://www.youtube.com/watch?v=example6"
+        }
+    },
+    {
+        "model": "lessons.lesson",
+        "pk": 7,
+        "fields": {
+            "course": 2,
+            "name": "Урок 3: ViewSet и роутеры",
+            "preview": "lessons/preview/drf_viewsets.jpg",
+            "description": "ModelViewSet, ReadOnlyViewSet, автоматическая генерация маршрутов.",
+            "link": "https://www.youtube.com/watch?v=example7"
+        }
+    },
+    {
+        "model": "lessons.lesson",
+        "pk": 8,
+        "fields": {
+            "course": 3,
+            "name": "Урок 1: Установка PostgreSQL",
+            "preview": "lessons/preview/postgres_install.jpg",
+            "description": "Установка PostgreSQL на различные ОС, настройка, первое подключение.",
+            "link": "https://www.youtube.com/watch?v=example8"
+        }
+    },
+    {
+        "model": "lessons.lesson",
+        "pk": 9,
+        "fields": {
+            "course": 3,
+            "name": "Урок 2: Основные SQL запросы",
+            "preview": "lessons/preview/postgres_sql.jpg",
+            "description": "SELECT, INSERT, UPDATE, DELETE. WHERE, JOIN, GROUP BY.",
+            "link": "https://www.youtube.com/watch?v=example9"
+        }
+    },
+    {
+        "model": "lessons.lesson",
+        "pk": 10,
+        "fields": {
+            "course": 3,
+            "name": "Урок 3: Индексы и оптимизация",
+            "preview": "lessons/preview/postgres_indexes.jpg",
+            "description": "Типы индексов, EXPLAIN, оптимизация запросов.",
+            "link": "https://www.youtube.com/watch?v=example10"
+        }
+    }
+]

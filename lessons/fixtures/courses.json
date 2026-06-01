@@ -1,0 +1,29 @@
+[
+    {
+        "model": "lessons.course",
+        "pk": 1,
+        "fields": {
+            "name": "Python Basic",
+            "preview": "courses/preview/python_basic.jpg",
+            "description": "Базовый курс по Python для начинающих. Изучим основы программирования, переменные, циклы, функции и многое другое."
+        }
+    },
+    {
+        "model": "lessons.course",
+        "pk": 2,
+        "fields": {
+            "name": "Django REST Framework",
+            "preview": "courses/preview/drf_course.jpg",
+            "description": "Полный курс по Django REST Framework. Создание REST API, сериализаторы, viewset, авторизация и многое другое."
+        }
+    },
+    {
+        "model": "lessons.course",
+        "pk": 3,
+        "fields": {
+            "name": "PostgreSQL для разработчиков",
+            "preview": "courses/preview/postgresql.jpg",
+            "description": "Изучение PostgreSQL: от основ до продвинутых запросов, оптимизации и администрирования."
+        }
+    }
+]
