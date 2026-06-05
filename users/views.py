@@ -3,6 +3,7 @@ from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter
 from rest_framework.generics import CreateAPIView
+from rest_framework.permissions import AllowAny
 
 from .models import Payment, User
 from .serializers import PaymentSerializer, UserSerializer
@@ -28,6 +29,7 @@ class PaymentListView(generics.ListAPIView):
 class UserCreateAPIView(CreateAPIView):
         serializer_class = UserSerializer
         queryset = User.objects.all()
+        permission_classes = (AllowAny,)
 
         def perform_create(self, serializer):
             user = serializer.save(is_active=True)
