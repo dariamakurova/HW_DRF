@@ -1,7 +1,17 @@
 asgiref==3.11.1
+black==26.5.1
+click==8.4.1
 Django==6.0.5
+django-filter @ file:///Users/dariamakurova/Downloads/django_filter-25.2-py3-none-any.whl#sha256=9c0f8609057309bba611062fe1b720b4a873652541192d232dd28970383633e3
 djangorestframework==3.17.1
+djangorestframework_simplejwt==5.5.1
+mypy_extensions==1.1.0
+packaging==26.2
+pathspec==1.1.1
 pillow==12.2.0
+platformdirs==4.10.0
 psycopg2==2.9.12
+PyJWT==2.13.0
 python-dotenv==1.2.2
+pytokens==0.4.1
 sqlparse==0.5.5

@@ -2,8 +2,10 @@
 from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter
-from .models import Payment
-from .serializers import PaymentSerializer
+from rest_framework.generics import CreateAPIView
+
+from .models import Payment, User
+from .serializers import PaymentSerializer, UserSerializer
 
 
 class PaymentListView(generics.ListAPIView):
@@ -22,3 +24,12 @@ class PaymentListView(generics.ListAPIView):
     # Сортировка
     ordering_fields = ['payment_date']
     ordering = ['-payment_date']  # по умолчанию сортировка от новых к старым
+
+class UserCreateAPIView(CreateAPIView):
+        serializer_class = UserSerializer
+        queryset = User.objects.all()
+
+        def perform_create(self, serializer):
+            user = serializer.save(is_active=True)
+            user.set_password(user.password)
+            user.save()
