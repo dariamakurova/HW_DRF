@@ -11,27 +11,35 @@ from .serializers import PaymentSerializer, UserSerializer
 
 class PaymentListView(generics.ListAPIView):
     """Список платежей с фильтрацией и сортировкой"""
+
     queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
     filter_backends = [DjangoFilterBackend, OrderingFilter]
 
     # Фильтрация
     filterset_fields = {
-        'payment_method': ['exact'],  # точное совпадение по способу оплаты
-        'course': ['exact', 'isnull'],  # фильтр по конкретному курсу или отсутствию курса
-        'lesson': ['exact', 'isnull'],  # фильтр по конкретному уроку или отсутствию урока
+        "payment_method": ["exact"],  # точное совпадение по способу оплаты
+        "course": [
+            "exact",
+            "isnull",
+        ],  # фильтр по конкретному курсу или отсутствию курса
+        "lesson": [
+            "exact",
+            "isnull",
+        ],  # фильтр по конкретному уроку или отсутствию урока
     }
 
     # Сортировка
-    ordering_fields = ['payment_date']
-    ordering = ['-payment_date']  # по умолчанию сортировка от новых к старым
+    ordering_fields = ["payment_date"]
+    ordering = ["-payment_date"]  # по умолчанию сортировка от новых к старым
+
 
 class UserCreateAPIView(CreateAPIView):
-        serializer_class = UserSerializer
-        queryset = User.objects.all()
-        permission_classes = (AllowAny,)
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+    permission_classes = (AllowAny,)
 
-        def perform_create(self, serializer):
-            user = serializer.save(is_active=True)
-            user.set_password(user.password)
-            user.save()
+    def perform_create(self, serializer):
+        user = serializer.save(is_active=True)
+        user.set_password(user.password)
+        user.save()
