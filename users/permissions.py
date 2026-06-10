@@ -1,5 +1,6 @@
 from rest_framework import permissions
 
+
 class IsModer(permissions.BasePermission):
     message = "Вы не являетесь модератором"
 

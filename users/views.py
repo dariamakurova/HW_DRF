@@ -1,16 +1,13 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, viewsets
 from rest_framework.filters import OrderingFilter
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from .models import Payment, User
 from .permissions import IsModer, IsOwner
-from .serializers import (
-    PaymentSerializer,
-    UserDetailSerializer,
-    UserSerializer,
-)
+from .serializers import (PaymentSerializer, UserDetailSerializer,
+                          UserSerializer)
 
 
 class PaymentListView(generics.ListAPIView):
@@ -39,18 +36,17 @@ class UserViewSet(viewsets.ModelViewSet):
         return UserSerializer
 
     def get_permissions(self):
-        if self.action == 'create':
+        if self.action == "create":
             self.permission_classes = (AllowAny,)
-        elif self.action in ['update', 'partial_update', 'destroy']:
+        elif self.action in ["update", "partial_update", "destroy"]:
             self.permission_classes = (IsAuthenticated, IsOwner)
-        elif self.action == 'retrieve':
+        elif self.action == "retrieve":
             self.permission_classes = (IsModer | IsOwner,)
         else:
             self.permission_classes = (IsModer,)
         return super().get_permissions()
 
     def get_queryset(self):
-        # Возвращаем всех пользователей, права проверяем в permissions
         return User.objects.all()
 
     def retrieve(self, request, *args, **kwargs):
@@ -72,7 +68,9 @@ class UserViewSet(viewsets.ModelViewSet):
             serializer = self.get_serializer(instance)
             return Response(serializer.data)
 
-        return Response({"detail": "У вас нет прав для просмотра этого профиля"}, status=403)
+        return Response(
+            {"detail": "У вас нет прав для просмотра этого профиля"}, status=403
+        )
 
     def perform_create(self, serializer):
         user = serializer.save()
