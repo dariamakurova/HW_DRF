@@ -1,33 +1,37 @@
 from rest_framework import serializers
-from rest_framework.serializers import ModelSerializer
+from .models import User
 
-from .models import Payment, User
+
+class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'password', 'first_name', 'last_name']
+        read_only_fields = ['id']
+
+    def create(self, validated_data):
+        password = validated_data.pop('password')
+        user = User(**validated_data)
+        user.set_password(password)
+        user.save()
+        return user
+
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    """Расширенный сериализатор для детального просмотра"""
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'first_name', 'last_name',
+                  'date_joined', 'last_login', 'is_active']
+        read_only_fields = ['id', 'date_joined', 'last_login']
 
 
 class PaymentSerializer(serializers.ModelSerializer):
     """Сериализатор для платежей"""
 
-    user_email = serializers.ReadOnlyField(source="user.email")
-    course_name = serializers.ReadOnlyField(source="course.name", read_only=True)
-    lesson_name = serializers.ReadOnlyField(source="lesson.name", read_only=True)
-
     class Meta:
+        from .models import Payment
         model = Payment
-        fields = [
-            "id",
-            "user",
-            "user_email",
-            "payment_date",
-            "course",
-            "course_name",
-            "lesson",
-            "lesson_name",
-            "amount",
-            "payment_method",
-        ]
-
-
-class UserSerializer(ModelSerializer):
-    class Meta:
-        model = User
-        fields = "__all__"
+        fields = '__all__'
