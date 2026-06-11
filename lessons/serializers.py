@@ -2,14 +2,23 @@
 from rest_framework import serializers
 
 from .models import Course, Lesson
+from .validators import validate_youtube_url
 
 
 class LessonSerializer(serializers.ModelSerializer):
     """Сериализатор для уроков"""
 
+    link = serializers.URLField(
+        validators=[validate_youtube_url],  # Используем функцию
+        required=False,
+        allow_blank=True,
+        allow_null=True
+    )
+
     class Meta:
         model = Lesson
-        fields = ["id", "name", "preview", "description", "link"]
+        fields = ['id', 'name', 'preview', 'description', 'link', 'course', 'owner']
+        read_only_fields = ['owner']
 
 
 class CourseDetailSerializer(serializers.ModelSerializer):
