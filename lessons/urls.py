@@ -1,6 +1,8 @@
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework.routers import SimpleRouter
-from .views import CourseViewSet, LessonListCreateView, LessonRetrieveUpdateDestroyView
+
+from .views import (CourseViewSet, LessonListCreateView,
+                    LessonRetrieveUpdateDestroyView)
 
 router = SimpleRouter()
 router.register(r"courses", CourseViewSet, basename="course")
